@@ -2,8 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
-void main() => runApp(CardProfile());
+void main() => runApp(new MaterialApp(
+        home: new CardProfile(),
+        routes: <String, WidgetBuilder>{
+          'Nama': (BuildContext context) => new Nama(),
+          'Email': (BuildContext context) => new Email(),
+          'Alamat': (BuildContext context) => new Alamat(),
+          'jk': (BuildContext context) => new Jk(),
+          'Kampus': (BuildContext context) => new Kampus(),
+        }));
 
 class CardProfile extends StatelessWidget {
   const CardProfile({Key? key}) : super(key: key);
@@ -22,7 +31,7 @@ class CardProfile extends StatelessWidget {
                 backgroundImage: AssetImage('assets/img/aku.jpg'),
               ),
               Text(
-                'Mahmudi',
+                'Noor Mahmudi',
                 style: TextStyle(
                   fontFamily: 'Pacifico',
                   fontSize: 40.0,
@@ -31,7 +40,7 @@ class CardProfile extends StatelessWidget {
                 ),
               ),
               Text(
-                'FLUTTER DEVELOPER',
+                '19710040',
                 style: TextStyle(
                   fontFamily: 'Source Sans Pro',
                   color: Colors.teal.shade100,
@@ -50,19 +59,21 @@ class CardProfile extends StatelessWidget {
               Card(
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
                 child: ListTile(
-                  leading: Icon(
-                    Icons.phone,
-                    color: Colors.teal,
-                  ),
-                  title: Text(
-                    '+62 0821 5494 3808',
-                    style: TextStyle(
-                      color: Colors.teal.shade900,
-                      fontFamily: 'Source Sans Pro',
-                      fontSize: 20.0,
+                    leading: Icon(
+                      Icons.person,
+                      color: Colors.teal,
                     ),
-                  ),
-                ),
+                    title: Text(
+                      'Nama',
+                      style: TextStyle(
+                        color: Colors.teal.shade900,
+                        fontFamily: 'Source Sans Pro',
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, 'Nama');
+                    }),
               ),
               Card(
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
@@ -72,12 +83,15 @@ class CardProfile extends StatelessWidget {
                     color: Colors.teal,
                   ),
                   title: Text(
-                    'mahmudicom2994@gmail.com',
+                    'Email',
                     style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.teal.shade900,
                         fontFamily: 'Source Sans Pro'),
                   ),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'Email');
+                  },
                 ),
               ),
               Card(
@@ -88,12 +102,15 @@ class CardProfile extends StatelessWidget {
                     color: Colors.teal,
                   ),
                   title: Text(
-                    'Desa Lokpaikat, Rt.09/Rw.04, Tapin',
+                    'Alamat',
                     style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.teal.shade900,
                         fontFamily: 'Source Sans Pro'),
                   ),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'Alamat');
+                  },
                 ),
               ),
               Card(
@@ -104,13 +121,16 @@ class CardProfile extends StatelessWidget {
                     color: Colors.teal,
                   ),
                   title: Text(
-                    'Laki-laki',
+                    'Jenis Kelamin',
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.teal.shade900,
                       fontFamily: 'Source Sans Pro',
                     ),
                   ),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'Jk');
+                  },
                 ),
               ),
               Card(
@@ -121,13 +141,16 @@ class CardProfile extends StatelessWidget {
                     color: Colors.teal,
                   ),
                   title: Text(
-                    'Universitas Islam Kalimantan Al-Banjari',
+                    'Universitas',
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.teal.shade900,
                       fontFamily: 'Source Sans Pro',
                     ),
                   ),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'Kampus');
+                  },
                 ),
               ),
             ],
@@ -135,5 +158,123 @@ class CardProfile extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class Nama extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Noor Mahmudi',
+            style: TextStyle(
+                fontFamily: 'Source Sans Pro',
+                fontSize: 40.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
+          ),
+        ],
+      )),
+    );
+  }
+}
+
+class Email extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'mahmudicom2994@gmail.com',
+            style: TextStyle(
+              fontFamily: 'Source Sans Pro',
+              fontSize: 40.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      )),
+    );
+  }
+}
+
+class Alamat extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Desa Lokpaikat, RT.09/RW.04, Tapin',
+            style: TextStyle(
+              fontFamily: 'Source Sans Pro',
+              fontSize: 40.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
+      )),
+    );
+  }
+}
+
+class Jk extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Laki-Laki',
+            style: TextStyle(
+              fontFamily: 'Source Sans Pro',
+              fontSize: 40.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      )),
+    );
+  }
+}
+
+class Kampus extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        backgroundColor: Colors.teal,
+        body: SafeArea(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Universitas Islam Kalimantan Muhammad Arsyad Al-Banjari',
+              style: TextStyle(
+                fontFamily: 'Source Sans Pro',
+                fontSize: 40.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          ],
+        )));
   }
 }
